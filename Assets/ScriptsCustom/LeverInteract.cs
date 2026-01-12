@@ -6,6 +6,9 @@ public class LeverInteract : MonoBehaviour
     [SerializeField]
     private XRLever lever;
 
+    [SerializeField] DoorManager doorManager;
+    [SerializeField] GameObject Door;
+
     void Awake()
     {
         if (lever == null)
@@ -41,5 +44,6 @@ public class LeverInteract : MonoBehaviour
     {
         lever.enabled = false;
         Debug.Log($"[XRLever] Levier à l'ANGLE MIN ({lever.minAngle}°)");
+        doorManager.OpenDoor(Door.transform);
     }
 }
