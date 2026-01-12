@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit;
+using System.Diagnostics;
 public class DoorManager : MonoBehaviour
 {
     [SerializeField] AudioClip sound;
@@ -12,11 +13,6 @@ public class DoorManager : MonoBehaviour
     private void OnEnable()
     {
         interactable.selectEntered.AddListener(OpenIronDoor);
-    }
-
-    private void OnDisable()
-    {
-        interactable.selectEntered.RemoveListener(OpenIronDoor);
     }
 
     public void OpenIronDoor(SelectEnterEventArgs selectEnterEventArgs)
