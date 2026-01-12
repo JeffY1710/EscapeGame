@@ -1507,6 +1507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_Big
       objectReference: {fileID: 0}
+    - target: {fileID: 2749371344087071471, guid: 7ad082d3e9533b64485bcc607b3bf826, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3267159478755027606, guid: 7ad082d3e9533b64485bcc607b3bf826, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

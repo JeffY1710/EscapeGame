@@ -6,20 +6,43 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class KnobManager : MonoBehaviour
 {
     [SerializeField] private Slider jauge;
-    
+    private XRKnob knob;
 
-    void Update()
+    void Awake()
     {
-        jauge.value = gameObject.GetComponent<XRKnob>().value;   
-
-        if (jauge.value > 0.52 && jauge.value < 0.54)
+        if (knob == null)
         {
-            JaugeSuceed();
+            knob = gameObject.GetComponent<XRKnob>();
         }
     }
 
-    public void JaugeSuceed()
+    void Update()
     {
-        Debug.Log("Tiroir ouvert");
+        jauge.value = knob.value;   
+    }
+
+
+    void OnEnable()
+    {
+        if (knob == null)
+            return;
+
+        knob.selectExited.AddListener(OnKnobReleased);
+    }
+
+    void OnDisable()
+    {
+        if (knob == null)
+            return;
+
+        knob.selectExited.RemoveListener(OnKnobReleased);
+    }
+
+    void OnKnobReleased(SelectExitEventArgs args)
+    {
+        if (jauge.value > 0.52 && jauge.value < 0.54)
+        {
+            knob.enabled = false;
+        }
     }
 }
